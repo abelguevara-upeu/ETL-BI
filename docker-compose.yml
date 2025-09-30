@@ -1,0 +1,24 @@
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver-bi
+    environment:
+      ACCEPT_EULA: Y
+      SA_PASSWORD: pass333#admin
+      MSSQL_PID: Express
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+      - ./scripts:/scripts
+      - ./backups:/backups
+    restart: unless-stopped
+    networks:
+      - sqlserver-network
+
+volumes:
+  sqlserver_data:
+
+networks:
+  sqlserver-network:
+    driver: bridge
