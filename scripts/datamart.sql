@@ -24,6 +24,7 @@ CREATE TABLE Dim_Cliente (
     Cliente_Telefono NVARCHAR(24),
     Cliente_Fax NVARCHAR(24)
 );
+GO
 
 -- Dim_Producto
 CREATE TABLE Dim_Producto (
@@ -32,8 +33,9 @@ CREATE TABLE Dim_Producto (
     Producto_Sustituto VARCHAR(40),
     Producto_Categoria VARCHAR(15),
     Producto_Codigo INT,
-    Producto_Preciotant MONEY
+    Producto_PrecioUnit MONEY
 );
+GO
 
 -- Dim_Transportista
 CREATE TABLE Dim_Transportista (
@@ -41,6 +43,7 @@ CREATE TABLE Dim_Transportista (
     Transportista_Nombre NVARCHAR(40),
     Transportista_Codigo INT
 );
+GO
 
 -- Dim_Tiempo
 CREATE TABLE Dim_Tiempo (
@@ -56,6 +59,7 @@ CREATE TABLE Dim_Tiempo (
     Tiempo_Annio INT,
     Tiempo_Fecha DATETIME
 );
+GO
 
 -- Dim_Empleado
 CREATE TABLE Dim_Empleado (
@@ -64,6 +68,7 @@ CREATE TABLE Dim_Empleado (
     Empleado_FechaCont DATETIME,
     Empleado_Codigo INT
 );
+GO
 
 -- TABLA DE HECHOS - Fact_Ventas
 CREATE TABLE Fact_Ventas (
@@ -73,10 +78,10 @@ CREATE TABLE Fact_Ventas (
     Tiempo_key INT,
     Empleado_key INT,
     -- Campos adicionales de medidas
-    Descuento_LineaItem MONEY,
-    Cantidad_LineaItem SMALLINT,
-    Flete_LineaItem MONEY,
-    Total_LineaItem MONEY,
+    Descuento_lineaItem MONEY,
+    Cantidad_lineaItem SMALLINT,
+    Flete_lineaItem MONEY,
+    Total_lineaItem MONEY,
     FechaRequerida DATETIME,
     -- Llave primaria compuesta
     PRIMARY KEY (Cliente_key, Producto_key, Transportista_key, Tiempo_key, Empleado_key),
